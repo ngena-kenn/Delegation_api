@@ -1,0 +1,36 @@
+
+{
+  "select": [
+    "CDEUO"
+  ],
+  "filter": {
+    "innerQueries": [
+      { "label": "CDESOC", "operator": "EQUAL", "value": "01" },
+      {"innerQueries": [
+        {"label": "TYPAGENCE","operator": "EQUAL","value": "DL"},
+        {"label": "TYPAGENCE","operator": "EQUAL","value": "BRL"}
+      ],
+        "operator": "OR"
+      },
+      { "label": "LOC", "operator": "EQUAL", "value": "R" },
+      {"innerQueries": [
+        {"label": "DATDEBACT","operator": "IS_NULL"},
+        {"label": "DATDEBACT","operator": "INF","value": "2022-01-02"}
+      ],
+        "operator": "OR"
+      },
+      {"innerQueries": [
+        {"label": "DATFINACT","operator": "IS_NULL"},
+        {"label": "DATFINACT","operator": "SUP_EQUAL","value": "2022-01-03"}
+      ],
+        "operator": "OR"
+      }
+
+    ]
+
+  },
+  "operator": "AND"
+
+
+
+}
